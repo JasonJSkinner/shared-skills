@@ -5,7 +5,7 @@
   "change_summary": "v2.0 -> v2.0.1: add REFRESH.md compaction-recovery sidecar (spec_02_v3_3 §7). SKILL.md unchanged.",
   "archive_path": "_archive/2026-05-19_v1.5",
   "skill_entrypoint": "SKILL.md",
-  "content_hash_sha256": "16f155dc7be174768fc86f0732ad2e73dedb3e380dc0fa37fa0e612f25b7d067",
+  "content_hash_sha256": "16ec87c92ad421edf6169922d369e31b28093a9aaab8353e7327777ca150138f",
   "breaking": false,
   "migration_note": "Additive: existing scenario-generation flow + v1.3 doctrine preserved verbatim. New `walkthrough` subcommand opt-in. PCB partial-migration leaves v1.3 references untouched (alias preservation per glossary footnote in SKILL.md body)."
 }

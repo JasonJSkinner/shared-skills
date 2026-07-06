@@ -2,7 +2,7 @@
 
 A small suite of **provider-neutral** skills for intent-driven development,
 verification, repair, audit, and follow-up capture. The suite assumes a
-governing artifact can exist upstream, often a Design Intent Brief, but the DIB
+governing artifact can exist upstream, often a Durable Intent Brief, but the DIB
 authoring skill itself is not part of this repo; it ships in the companion
 `dib-system` repository.
 

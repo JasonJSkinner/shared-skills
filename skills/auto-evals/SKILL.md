@@ -18,7 +18,7 @@ Originally derived from an autonomous eval pilot. v1.3 added Phase Review Briefs
 
 When governing documents disagree, later items yield to earlier items:
 
-1. **DIB(s)** — Design Intent Brief(s). Define what good looks like. Highest authority.
+1. **DIB(s)** — Durable Intent Brief(s). Define what good looks like. Highest authority.
 2. **PCB(s)** — Phase Contract Brief(s) (formerly PRBs). Translate DIB intent into review-grade phase contracts. Override specs but defer to DIBs.
 3. **Specs** — per-phase implementation specs. Concrete but lowest authority; a spec that drifts from its PCB or governing DIB is wrong, not authoritative.
 

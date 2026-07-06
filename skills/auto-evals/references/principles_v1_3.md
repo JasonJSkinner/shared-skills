@@ -14,7 +14,7 @@ The goal is to generate a compact, autonomous, reviewable eval package that judg
 
 When governing documents disagree, later items yield to earlier items:
 
-1. **DIB(s)** — Design Intent Brief(s). Define what good looks like and the durable intent. Highest authority.
+1. **DIB(s)** — Durable Intent Brief(s). Define what good looks like and the durable intent. Highest authority.
 2. **PRB(s)** — Phase Review Brief(s). Translate DIB intent into review-grade phase contracts. Override specs but defer to DIBs.
 3. **Specs** — per-phase implementation specs. Concrete but lowest authority; a spec that drifts from its PRB or governing DIB is wrong, not authoritative.
 
