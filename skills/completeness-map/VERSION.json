@@ -1,0 +1,43 @@
+{
+  "current_version": "1.2",
+  "parent_version": "1.1.1",
+  "updated_at": "public-release",
+  "change_summary": "v1.1.1 -> v1.2: adds written-vs-wired evidence ladder, consumer-bucket taxonomy, and the canonical written-but-not-wired example row to references/anti-patterns.md.",
+  "archive_path": "not shipped in public release",
+  "skill_entrypoint": "SKILL.md",
+  "content_hash_sha256": "32280ea69b5f505563bbd7b59c6200b00929e546996289c328fc1dd06a001439",
+  "breaking": false,
+  "migration_note": null,
+  "schema_source": "Anchored to the completeness-map sidecar concept, schema, enums, eligibility, anti-pattern, and nested-handling references shipped with the skill.",
+  "closes_synthesis_deferred": "Sidecar generation mechanism is implemented in this skill version.",
+  "v1_0_promotion_gate": "SATISFIED. v1.0 refined drift-detection automation, auto-invoke triggers, sub-command surface refinements, and cross-DIB conventions without disrupting the locked schema/enum/eligibility/anti-pattern substrate.",
+  "v1_1_gate_port": "v1.1 ports the enforced completion-claim gate and harmonizes closure-accounting aid terminology with the requirement language.",
+  "audit_skip_claim": {
+    "surgical": true,
+    "audit_skipped_reason": "surgical",
+    "rationale": "Parent-authorized additive edit: three anchored SKILL.md insertions (written-vs-wired evidence-ladder paragraph, consumer-bucket taxonomy reminder, written-vs-wired authoring reminder) plus one references/anti-patterns.md example row; no changes to the 7-section schema, the sub-command verbs, or the invocation triggers.",
+    "files_touched": [
+      "SKILL.md",
+      "references/anti-patterns.md"
+    ],
+    "lines_changed_net": 17,
+    "sections_touched": [
+      "§11 anti-shortcut gate",
+      "Step 3 §1/§5 critical reminders",
+      "references/anti-patterns.md §5 table"
+    ],
+    "untouched_contracts": [
+      "frontmatter.name",
+      "frontmatter.description",
+      "workflow-step-order",
+      "cross-skill-references",
+      "bash-patterns",
+      "sub-command-verbs",
+      "7-section-schema",
+      "invocation-triggers"
+    ],
+    "authorized_by": "public release scrub",
+    "strict_criteria_note": "Recorded as an explicit parent-authorized waiver on the semantic 'no schema/verb/trigger change' test, not as a strict mechanical auto-skip."
+  },
+  "changelog": []
+}
