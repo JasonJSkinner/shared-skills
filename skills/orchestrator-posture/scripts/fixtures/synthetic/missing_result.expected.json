@@ -1,0 +1,16 @@
+{
+  "description": "Agent launch + codex lane, neither result present. Two launches stay outstanding, so return_bytes is a floor (proxy) with the outstanding count reported beside it \u2014 never a clean observed 0.",
+  "expect": {
+    "dispatch_codex_lane": 1,
+    "dispatch_subagent": 1,
+    "return_bytes": 0,
+    "unreturned_launches": 2
+  },
+  "expect_ledger": {
+    "brief_bytes.evidence": "observed",
+    "return_bytes.evidence": "proxy",
+    "return_bytes.value": 0,
+    "unreturned_launches.evidence": "observed",
+    "unreturned_launches.value": 2
+  }
+}

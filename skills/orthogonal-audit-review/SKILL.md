@@ -1,7 +1,7 @@
 ---
 name: orthogonal-audit-review
 description: Lightweight conceptual guardrail for reviewing non-trivial work products (edits made at high context, multi-file refactors, long-form prose, DIB drift checks, skill edits outside of skill-edit-audit's scope). Auto-invoke when the user asks to "audit", "review for hallucinations", "sanity-check", "second-pass", or after a large batch of edits lands and no domain-specific audit skill applies. Applies the orthogonal-framing principle — multi-lane reframing creates cognitive parallax (not just wider coverage) + finding-verification — as guidance, not machinery. Defer to skill-edit-audit (or future adapters like code-edit-audit) when one fits; this skill is the fallback and the principle-teacher. Formerly named triangulated-audit.
-version: 0.3
+version: 0.3.1
 ---
 
 # Orthogonal Audit Review (v0.3, principles-only)

@@ -1,11 +1,17 @@
 {
-  "current_version": "0.2.1",
-  "parent_version": "0.2",
-  "updated_at": "public-release",
-  "change_summary": "v0.2 -> v0.2.1: add REFRESH.md compaction-recovery sidecar. SKILL.md unchanged.",
+  "current_version": "0.5.3",
+  "parent_version": "0.2.1",
+  "upstream_version": "0.5.2",
+  "updated_at": "2026-09-09",
+  "change_summary": "Sync the script-backed v0.5.2 lifecycle and harden repair-body so replacements cannot inject record boundaries or duplicate managed metadata.",
   "archive_path": "not shipped in public release",
   "skill_entrypoint": "SKILL.md",
-  "content_hash_sha256": "165cc7e9ddd78b894a57f66387a94d6a3cb0af0c0fa25c41031c1c08a3e8f385",
+  "content_hash_sha256": "4420f972dd87efa8bf31c98002db1f25ce8b7aec2796d6fd2743631750fdd7a0",
   "breaking": false,
-  "migration_note": "Additive + backwards-compatible. Untagged v0.1 items remain valid (default lane:L/priority:normal at read time). All v0.1 verbs preserved; `add` workflow upgraded to the agent-led inference loop; `enrich` verb added. Bulk reference content lives in lazy-loaded references/lane-model.md; the spine carries contract only."
+  "migration_note": "Public v0.5.3 preserves the canonical ~/.claude/deferrals default, retains DEFERRALS_ROOT and explicit --root overrides, keeps Codex read-only, and exposes Claude hook integration only in the Claude-rendered instructions.",
+  "portability": {
+    "core_cli": "Python standard library plus POSIX fcntl; macOS/Linux",
+    "optional_git": "Used only for automatic project-key derivation",
+    "claude_hook": "Optional Bash + jq integration; not authority for mutation"
+  }
 }

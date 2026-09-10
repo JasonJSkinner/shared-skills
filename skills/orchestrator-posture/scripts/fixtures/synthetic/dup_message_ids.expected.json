@@ -1,0 +1,10 @@
+{
+  "description": "one message.id across 3 records + a repeated block id",
+  "expect": {
+    "assistant_messages": 1,
+    "brief_bytes": 100,
+    "dispatch_subagent": 1,
+    "lead_bash_mutations": 1,
+    "lead_edit_write": 1
+  }
+}

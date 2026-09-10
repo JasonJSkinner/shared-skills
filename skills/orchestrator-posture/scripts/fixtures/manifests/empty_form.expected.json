@@ -1,0 +1,6 @@
+{
+  "description": "manifest present, zero parseable entries \u2014 must be unknown + instrumentation-incomplete, never an observed empty result",
+  "expect_deliverables_evidence": "unknown",
+  "expect_entries": 0,
+  "expect_failure_code": "instrumentation-incomplete"
+}

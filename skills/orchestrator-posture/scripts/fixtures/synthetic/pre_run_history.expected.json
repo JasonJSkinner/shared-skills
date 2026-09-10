@@ -1,0 +1,13 @@
+{
+  "description": "session transcript with pre-run history and a discarded branch; only records at/after the run's started_at may be counted",
+  "expect": {
+    "assistant_messages": 2,
+    "brief_bytes": 40,
+    "dispatch_codex_lane": 0,
+    "dispatch_subagent": 1,
+    "lead_bash_mutations": 1,
+    "lead_edit_write": 0,
+    "wake_ups": 0
+  },
+  "scope_started_at": "2026-09-09T12:00:00+00:00"
+}

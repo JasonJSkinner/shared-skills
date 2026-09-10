@@ -1,0 +1,7 @@
+{
+  "description": "item 4: a readable JSONL carrying no recognizable Claude Code record type (e.g. a Codex rollout) must be classified `unsupported`, not counted as a clean set of zeros",
+  "expect": {
+    "dispatch_subagent": 0
+  },
+  "expect_transcript_shape": "unsupported"
+}

@@ -60,7 +60,7 @@ You are the Phase C meta-synthesis agent for an `/auto-evals walkthrough` run. Y
 }
 ```
 
-`{OUTPUT_MD_PATH}` (default `phase-c/meta-synthesis.md`): human-readable companion covering the same content + narrative. **Annotate the actual-landed patch count separately from the synthesis count** (see SURGICAL_PATCH source-of-truth below).
+`{OUTPUT_MD_PATH}` (default `phase-c/meta-synthesis.md`): human-readable companion covering the same content + narrative. **Annotate the actual-landed patch count separately from the synthesis count** (see SURGICAL_PATCH source-of-truth below); walkthrough mode terminates at Phase C before any patch phase, so at synthesis time record the landed count as `not yet applicable` unless an authorized patch phase has already run.
 
 ### Confidence vocabulary (exact strings — DO NOT rename)
 

@@ -1,9 +1,17 @@
-# Deferrals Lane Model — v0.2 Reference
+# Deferrals Lane Model — lane/priority reference (current under v0.4)
 
-Lazy-loaded sidecar for `/deferrals` v0.2. Load this
+Lazy-loaded sidecar for `/deferrals`. Load this
 when authoring or enriching an H-lane item, or when you need the worked detail
 behind the SKILL.md spine. The spine carries the contract + decision flow; this
 file carries the bulk model.
+
+> **v0.4 reading note.** The lane/priority model, the transfer test, and the H-shape
+> skeleton below are unchanged and current. Everything about *how a ticket is written*
+> is not: under v0.4 every mutation goes through `scripts/deferrals.py`, never freehand
+> markdown. Where this file says "v0.3's `add`", read it as the same inference loop now
+> ending in a script call. `/deferrals-add` and `/deferrals-claim`, referenced below,
+> were never built and do not exist — `claim` is a CLI verb. Storage grammar in this
+> file is superseded by `v04-spec.md`.
 
 ---
 
@@ -25,7 +33,7 @@ high-fidelity" list drifts as use cases evolve and invites box-ticking. The
 transfer test is durable because it tests the *property* (transferability), not a
 *category*.
 
-**Transfer-test supremacy over the default table:** the priority→lane table
+**Transfer-test SUPREMACY over the D3 default table:** the D3 priority→lane table
 sets *defaults*, not verdicts. A `normal`-priority item whose context would leave a
 different-chat agent guessing becomes `H` — regardless of what the table says.
 Never reduce lane selection to the table alone. The table is the starting point;
@@ -44,7 +52,7 @@ short pointer. Shape: title + 1-3 lines + optional `verify:`.
 
 ```markdown
 - [ ] **ddf_4d0e2a91** — Refresh stale README badge
-  - threads: 93d4dac5 | created: <YYYY-MM-DD> by 93d4dac5 | lane: L | priority: trivial
+  - threads: 93d4dac5 | created: 2026-05-20 by 93d4dac5 | lane: L | priority: trivial | autonomy: 5
   - verify: file-exists `README.md`
   - Badge target URL moved; update when docs are next touched.
 ```
@@ -61,7 +69,7 @@ recommended skeleton (recommended, not mandatory — see §6):
 
 ```markdown
 - [ ] **ddf_ab12cd34** — <imperative title>
-  - threads: <short-ids> | created: <YYYY-MM-DD> by <short-id> | lane: H | priority: <p>
+  - threads: <short-ids> | created: <YYYY-MM-DD> by <short-id> | lane: H | priority: <p> | autonomy: <1-5>
   - verify: <pointer — symbol-exists | file-exists | test-passes | url-200 | custom>
   - **Background:** 50-300 words. The situation, why it was deferred, what makes it
     non-obvious. Enough that a different-chat agent understands the *why*, not just
@@ -73,27 +81,26 @@ recommended skeleton (recommended, not mandatory — see §6):
   - **Trigger conditions:** (a) <condition> (b) <condition> (c) <condition>
   - **Bundling:** <co-landing notes — optional; which other work this should land with>
   - **(YYYY-MM-DD)** <inline update as understanding evolves — optional, repeatable>
-  - **Cross-reference:** <decision artifacts / specs / sibling deferrals / artifact paths>
+  - **Cross-reference:** <DRs / specs / sibling deferrals / artifact paths>
 ```
 
 ### Worked H-lane example
 
 ```markdown
-- [ ] **ddf_ab12cd34** — File eval-artifact fallback deferral when /auto-evals cannot run the expected tool
-  - threads: 93d4dac5 | created: <YYYY-MM-DD> by 93d4dac5 | lane: H | priority: important
-  - verify: custom — auto-evals fallback path records a deferral instead of silently skipping the artifact
-  - **Background:** The `/auto-evals` fallback path is a named H-lane
-    consumer for `/deferrals` v0.2. If the expected eval tool is unavailable,
-    the downstream agent must preserve the gap as
-    actionable deferred work rather than letting the run appear complete.
+- [ ] **ddf_ab12cd34** — Preserve a failed release verification for the next run
+  - threads: 93d4dac5 | created: 2026-05-20 by 93d4dac5 | lane: H | priority: important | autonomy: 4
+  - verify: custom — the release workflow records failed verification instead of silently skipping it
+  - **Background:** A release verification could not run because its external service
+    was unavailable. The downstream agent must preserve the gap as actionable deferred
+    work rather than letting the release appear fully verified.
   - **Action when triggered:**
-    1. Identify the unavailable-tool condition and the affected eval scope.
-    2. File an H-lane deferral with the failed command, expected artifact, and recovery path.
-    3. Cross-reference the governing auto-evals artifact and the run evidence path.
-  - **Trigger conditions:** (a) expected command missing (b) command fails before usable
+    1. Record the unavailable dependency and affected verification scope.
+    2. Preserve the failed command, expected artifact, and recovery path.
+    3. Cross-reference the release contract and run evidence.
+  - **Trigger conditions:** (a) dependency unavailable (b) command fails before usable
     output (c) policy blocks execution.
-  - **Bundling:** Co-land with any change to the `/auto-evals` fallback behavior itself.
-  - **Cross-reference:** governing auto-evals artifact; skill version-fallback pattern.
+  - **Bundling:** Co-land with any change to the release fallback behavior itself.
+  - **Cross-reference:** release contract; run evidence path.
 ```
 
 This item passes the transfer test: a different-chat agent has the why
@@ -110,22 +117,22 @@ This item passes the transfer test: a different-chat agent has the why
 **Before:**
 
 ```markdown
-- [ ] **ddf_9cb129e3** — Revisit Phase A-E inline update
-  - threads: 93d4dac5 | created: <YYYY-MM-DD> by 93d4dac5 | lane: L | priority: normal
-  - Recovery transcript has paste-ready language.
+- [ ] **ddf_9cb129e3** — Revisit release-note wording
+  - threads: 93d4dac5 | created: 2026-05-14 by 93d4dac5 | lane: L | priority: normal | autonomy: 3
+  - The review artifact has paste-ready language.
 ```
 
 **After `/deferrals enrich ddf_9cb129e3`:**
 
 ```markdown
-- [ ] **ddf_9cb129e3** — Revisit Phase A-E inline update
-  - threads: 93d4dac5 | created: <YYYY-MM-DD> by 93d4dac5 | lane: H | priority: normal
-  - **Background:** The existing one-line context ("recovery transcript has
+- [ ] **ddf_9cb129e3** — Revisit release-note wording
+  - threads: 93d4dac5 | created: 2026-05-14 by 93d4dac5 | lane: H | priority: normal | autonomy: 3
+  - **Background:** The existing one-line context ("the review artifact has
     paste-ready language") is retained and expanded so the update can be applied
     without recovering the original chat. <expanded situation here>
   - **Action when triggered:** 1. <...> 2. <...>
   - **Trigger conditions:** (a) <...>
-  - **Cross-reference:** recovery transcript grep result; relevant Phase A-E artifact.
+  - **Cross-reference:** review artifact; release-note draft.
 ```
 
 Note: the ID, thread, created-by, and title are unchanged. The existing L context
@@ -136,14 +143,14 @@ upgrade, not a re-rating (re-rate priority separately only if context clearly wa
 
 ## 5. The agent-led `add` inference loop — worked
 
-v0.2's `add` is agent-led, not title-only. Worked exchange:
+v0.3's `add` is agent-led, not title-only. Worked exchange:
 
 ```text
-User: Defer the auto-evals fallback gap from this run.
-Agent: Adding ddf_ab12cd34 [H, important] — File eval-artifact fallback deferral when
-       /auto-evals cannot run the expected tool. Confirm or override?
+User: Defer the failed release verification from this run.
+Agent: Adding ddf_ab12cd34 [H, important, autonomy 4] — Preserve failed release
+       verification for the next run. Confirm or override?
 User: Confirm.
-Agent: Added ddf_ab12cd34 [H, important].
+Agent: Added ddf_ab12cd34 [H, important, autonomy 4].
 ```
 
 The agent inferred `H` (transfer test: a different-chat agent would need the
@@ -178,30 +185,32 @@ ask whether you'd be stuck.
 - **Hardcoding a "high-fidelity scenarios" list** as the decision rule. The
   transfer test is the rule; scenario lists only illustrate.
 - **`enrich` that creates a new item** instead of upgrading in place. This loses
-  the ID, thread lineage, and created-by metadata. Always upgrade in place.
-- **Treating the default table as the verdict.** It sets defaults; the transfer test
+  the ID, thread lineage, and created-by provenance. Always upgrade in place.
+- **Treating the D3 table as the verdict.** It sets defaults; the transfer test
   decides. A `normal` item still goes `H` when transfer would fail.
 - **Making H-lane fields mandatory.** A transfer-test-passing H item with a thin
   Bundling field (or no Bundling at all) is fine.
-- **A fast-create shortcut keeping a title-only path.** Fast-create can be
-  concise, but it must route through the `add` inference loop — a title-only
-  bypass defeats the add contract.
+- **`/deferrals-add` keeping a v0.1 title-only fast path.** Fast-create can be
+  concise, but it must route through the v0.3 `add` inference loop — a title-only
+  bypass defeats D6.
 - **Auto-rewriting genuinely-corrupt metadata** as if it were valid legacy.
-  Missing `lane:`/`priority:` keys = valid legacy (default L/normal). Malformed
+  Missing `lane:`/`priority:` keys = valid legacy (default L/normal); missing
+  `autonomy:` = valid legacy (display `?`). Malformed
   metadata (e.g. `lane: Q`, broken metadata-line structure) = corrupt → surface it.
 - **Conflating fidelity and priority.** They are orthogonal axes. A `blocking`
-  item can be mechanically obvious (L-shaped content, H-defaulted by the table); a
+  item can be mechanically obvious (L-shaped content, H-defaulted by D3); a
   `trivial` item rarely needs H but could if its setup is genuinely nuanced.
-- **Treating `blocking` as an escalation workflow.** The default says "H always +
+- **Conflating autonomy with priority or fidelity.** `autonomy` estimates current
+  execution readiness. It may change as decisions are made, and its model names are
+  calibration anchors rather than permanent routing requirements.
+- **Treating `blocking` as an escalation workflow.** D3 says "H always +
   escalation candidate" — "candidate", not a notification system.
 
 ---
 
 ## 8. Cross-references
 
-- `../SKILL.md` — the v0.2 spine: contract, verb table, transfer test, default mapping
-- `../SKILL.md` — `/deferrals` v0.2 design
-- The thin-umbrella + lazy-load structure this sidecar mirrors — bulk reference
-  content lives here so the main `SKILL.md` stays lean
-- Skill version-fallback pattern (the `/auto-evals` fallback example is the
-  canonical first H-lane consumer)
+- `../SKILL.md` — the live spine (v0.4): golden rule, CLI verb table, lifecycle matrix,
+  transfer test, D3 mapping, and the four rating axes
+- `../references/v04-spec.md` — binding v0.4 storage grammar and transaction contract
+- `../scripts/deferrals.py` — deterministic mutation implementation

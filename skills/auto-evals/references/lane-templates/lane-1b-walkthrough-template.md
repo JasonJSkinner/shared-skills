@@ -38,7 +38,7 @@ You do NOT inherit Lane 1a's hidden test-design state — you receive only the a
 
 Walk the scenario step-by-step through the realization artifacts + spec stack. For each step, cite the governing spec section(s) and adjudicate. Then issue an overall verdict + per-tested-intent status + findings.
 
-### Output — write to `{OUTPUT_PATH}` (default `phase-b/walkthrough-S{NN}.json`)
+### Output — write to `{OUTPUT_PATH}` (default `phase-b/walkthrough-{NN}.json`)
 
 ```json
 {

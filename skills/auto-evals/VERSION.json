@@ -1,11 +1,12 @@
 {
-  "current_version": "2.0.1",
-  "parent_version": "2.0",
-  "updated_at": "2026-07-05",
-  "change_summary": "v2.0 -> v2.0.1: add REFRESH.md compaction-recovery sidecar (spec_02_v3_3 §7). SKILL.md unchanged.",
-  "archive_path": "_archive/2026-05-19_v1.5",
+  "current_version": "2.6.2",
+  "parent_version": "2.0.1",
+  "upstream_version": "2.6.2",
+  "updated_at": "2026-09-09",
+  "change_summary": "Sync accepted-DR authority, blind scenario-design tiers, frozen-oracle adjudication, and corrected walkthrough template filenames from canonical v2.6.2.",
+  "archive_path": "not shipped in public release",
   "skill_entrypoint": "SKILL.md",
-  "content_hash_sha256": "16ec87c92ad421edf6169922d369e31b28093a9aaab8353e7327777ca150138f",
+  "content_hash_sha256": "bda1709d2d0968ae1704bf991ef4f42eace04b609b60c81d5a5a7fbb1c030138",
   "breaking": false,
-  "migration_note": "Additive: existing scenario-generation flow + v1.3 doctrine preserved verbatim. New `walkthrough` subcommand opt-in. PCB partial-migration leaves v1.3 references untouched (alias preservation per glossary footnote in SKILL.md body)."
+  "migration_note": "Public adaptation keeps model selection capability-based, removes owner-only harness dependencies, and preserves provider-neutral holdout and verdict contracts."
 }

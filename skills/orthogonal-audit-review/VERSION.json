@@ -1,11 +1,11 @@
 {
   "current_version": "0.3.1",
   "parent_version": "0.3",
-  "updated_at": "2026-07-05",
-  "change_summary": "v0.3 -> v0.3.1: add REFRESH.md compaction-recovery sidecar (spec_02_v3_3 §7). SKILL.md unchanged.",
-  "archive_path": "_archive/2026-05-20_v0.2",
+  "updated_at": "2026-09-09",
+  "change_summary": "v0.3 -> v0.3.1: add REFRESH.md and synchronize the entrypoint's version marker.",
+  "archive_path": "not shipped in public release",
   "skill_entrypoint": "SKILL.md",
-  "content_hash_sha256": "1b32eee4bcce9cfebf2fd4884c79514d0d950ebcc2ebf0118ceba896b4f7e25c",
+  "content_hash_sha256": "643295abc040db618e1590998e98788fcd5f3b495ade95d8aa6a98d129f472b8",
   "breaking": false,
   "migration_note": "Any skill or doc referencing triangulated-audit should be updated to orthogonal-audit-review. skill-edit-audit SKILL.md already references this skill as spine; that reference will be updated in a follow-up edit."
 }

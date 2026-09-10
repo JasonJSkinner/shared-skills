@@ -1,0 +1,10 @@
+{
+  "current_version": "0.1",
+  "parent_version": null,
+  "updated_at": "2026-09-09",
+  "change_summary": "Initial public source with portable dependency routing and complete Claude/Codex/Gemini ranged-read and proposal-only boundaries.",
+  "skill_entrypoint": "SKILL.md",
+  "content_hash_sha256": "f01674aa3e33829e55e5b710099cc071572653da16b50472ae52bba83c96680e",
+  "breaking": false,
+  "migration_note": null
+}

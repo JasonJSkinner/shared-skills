@@ -1,0 +1,10 @@
+{
+  "current_version": "1.5.1",
+  "parent_version": null,
+  "updated_at": "2026-09-09",
+  "change_summary": "Initial public source from current shared skill; portable dependency routing and private provenance omitted.",
+  "skill_entrypoint": "SKILL.md",
+  "content_hash_sha256": "78856f2cc5bad8ba16155d565b52f3c804f289f4cc270e52aee54cd6bbb1ac97",
+  "breaking": false,
+  "migration_note": null
+}

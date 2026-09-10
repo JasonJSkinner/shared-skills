@@ -1,0 +1,32 @@
+{
+  "counters": {
+    "lane_failures": [
+      {
+        "ts": "2026-09-09T12:01:00+00:00"
+      }
+    ]
+  },
+  "description": "item 1 (round 4): absorbed-lane-without-estimate is ALWAYS manual in v0.4 \u2014 lane identity is lead-declared and cannot be corroborated from a tool_result, so no transcript evidence promotes it to observed.",
+  "events": [
+    {
+      "at": "2026-09-09T12:01:00+00:00",
+      "deliverable": "x",
+      "kind": "accept",
+      "lane_id": "L9",
+      "result": "fail"
+    },
+    {
+      "at": "2026-09-09T12:02:00+00:00",
+      "id": "r1",
+      "kind": "note",
+      "repairs": "L9",
+      "route": "direct"
+    }
+  ],
+  "expect_failure_codes": [
+    "absorbed-lane-without-estimate"
+  ],
+  "expect_failure_evidence": {
+    "absorbed-lane-without-estimate": "manual"
+  }
+}

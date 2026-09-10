@@ -1,0 +1,14 @@
+{
+  "description": "S7: an intermediate Stop is a checkpoint. A deliverable that has not landed yet is recorded as missing but is NOT a lost-deliverable failure until the run is complete.",
+  "expect": {
+    "deliverables.value.missing": 1
+  },
+  "expect_no_failure_codes": [
+    "lost-deliverable",
+    "acceptance-check-omitted"
+  ],
+  "manifest_md": "- `WILL_ARRIVE.md` \u2014 check: `true`\n",
+  "sentinel": {
+    "complete": false
+  }
+}

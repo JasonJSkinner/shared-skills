@@ -1,0 +1,14 @@
+{
+  "description": "item 11: a brace set whose members are globs needs EVERY member to match at least one file.",
+  "expect": {
+    "deliverables.value.missing": 1,
+    "deliverables.value.present": 0
+  },
+  "files": {
+    "out/a1.log": "x\n"
+  },
+  "manifest_md": "- `out/{a,b}*.log` \u2014 check: `true`\n",
+  "sentinel": {
+    "complete": true
+  }
+}

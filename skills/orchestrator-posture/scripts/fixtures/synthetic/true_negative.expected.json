@@ -1,0 +1,14 @@
+{
+  "description": "no dispatches, no edits, one human turn (not a wake-up)",
+  "expect": {
+    "assistant_messages": 2,
+    "brief_bytes": 0,
+    "dispatch_codex_lane": 0,
+    "dispatch_subagent": 0,
+    "lead_bash_mutations": 0,
+    "lead_edit_write": 0,
+    "return_bytes": 0,
+    "unreturned_launches": 0,
+    "wake_ups": 0
+  }
+}

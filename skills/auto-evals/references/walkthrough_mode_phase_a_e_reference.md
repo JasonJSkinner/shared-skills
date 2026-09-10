@@ -126,15 +126,15 @@ The 5 spec files yielded **509 spec chunks**; the 3 DIB files yielded **41 DIB c
 
 | Layer | Vocabulary | Source |
 |---|---|---|
-| **Lane 1b scenario verdict** | `ALIGNED \| PARTIAL \| CONTRADICTED \| SILENT \| AMBIGUOUS` | `lane-1b-scenario-walkthrough-template.md` |
+| **Lane 1b scenario verdict** | `ALIGNED \| PARTIAL \| CONTRADICTED \| SILENT \| AMBIGUOUS` | `lane-1b-walkthrough-template.md` |
 | **Lane 1b per-chunk status** | `REALIZED \| PARTIAL \| MISSING \| CONTRADICTED` | same |
 | **Lane 1b finding severity** | `blocking \| concerning \| minor` | same |
-| **Lane 2 alignment** | `REALIZED \| PARTIAL \| MISSING \| CONTRADICTED \| OUT_OF_SCOPE` | `lane-2-batched-template.md` |
+| **Lane 2 alignment** | `REALIZED \| PARTIAL \| MISSING \| CONTRADICTED \| OUT_OF_SCOPE` | `lane-2-downward-template.md` |
 | **Lane 2 site completeness** | `fully \| partially \| tangentially` | same |
-| **Lane 3 justification** | `JUSTIFIED \| DR_JUSTIFIED \| INDIRECT \| ORPHAN \| OVER_ENGINEERED` | `lane-3-batched-template.md` |
+| **Lane 3 justification** | `JUSTIFIED \| DR_JUSTIFIED \| INDIRECT \| ORPHAN \| OVER_ENGINEERED` | `lane-3-upward-template.md` |
 | **Lane 3 trace path** | `Direct DIB principle \| Via decision artifact \| Via PCB pattern \| Implementation-discipline` | same |
 | **Lane 3 strength** | `strong \| moderate \| tenuous` | same |
-| **Phase C confidence** | `triple-confirmed \| double-confirmed \| single-lane` | `phase-c-meta-opus-template.md` |
+| **Phase C confidence** | `triple-confirmed \| double-confirmed \| single-lane` | `phase-c-meta-synthesis-template.md` |
 | **Phase C recommendation** | `GO \| SURGICAL_PATCH \| VERSION_BUMP \| NEW_DR \| DEFER \| ARCHITECTURAL_REVIEW` | same |
 | **Phase C canonization** | `yes \| yes-with-surgical \| no-blocking-found` | same |
 | **Phase C holdout verdict** | `PRESERVED \| BREACHED \| UNVERIFIED` | same |

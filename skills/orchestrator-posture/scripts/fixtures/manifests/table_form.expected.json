@@ -1,0 +1,13 @@
+{
+  "description": "Generic pipe table with required-path and check-command columns, a glob, a brace set, and one row naming two paths.",
+  "expect_deliverables_evidence": "observed",
+  "expect_entries": 7,
+  "expect_no_path_starting": "test -f",
+  "expect_paths_contain": [
+    "./archive/*previous*/entry.md",
+    "./skills/example/SKILL.md",
+    "./scripts/{install,status,uninstall}.sh",
+    "./out/claude/SKILL.md",
+    "./out/codex/SKILL.md"
+  ]
+}

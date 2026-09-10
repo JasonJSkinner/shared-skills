@@ -1,0 +1,24 @@
+{
+  "budget_seconds": 1e-06,
+  "counters": {
+    "dispatch_subagent": 2,
+    "scan_stopped_early": true
+  },
+  "description": "items 3+5: with the deadline already tripped the classification loop stops on its first item, so `deliverables` is proxy and the acceptance-check-omitted failure INHERITS that tag instead of claiming observed; scan_stopped_early independently drops the transcript-derived fields to proxy.",
+  "expect": {
+    "brief_bytes.evidence": "proxy",
+    "delegations.subagent.evidence": "proxy",
+    "deliverables.evidence": "proxy"
+  },
+  "expect_failure_codes": [
+    "acceptance-check-omitted",
+    "instrumentation-incomplete"
+  ],
+  "expect_failure_evidence": {
+    "acceptance-check-omitted": "proxy"
+  },
+  "manifest_md": "- `never.md` \u2014 check: `true`\n",
+  "sentinel": {
+    "complete": true
+  }
+}

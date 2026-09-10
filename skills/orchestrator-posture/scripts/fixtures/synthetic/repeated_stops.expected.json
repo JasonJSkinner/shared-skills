@@ -1,0 +1,11 @@
+{
+  "description": "Stop fires twice over the same bytes",
+  "expect": {
+    "assistant_messages": 2,
+    "dispatch_subagent": 1,
+    "lead_bash_mutations": 0,
+    "return_bytes": 4,
+    "wake_ups": 1
+  },
+  "rescan_delta_zero": true
+}
