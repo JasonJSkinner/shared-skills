@@ -1,7 +1,0 @@
-{
-  "description": "one REAL guard rejection (parenthesised count) plus prose merely MENTIONING out-of-scope writes; only the real one may count",
-  "expect": {
-    "dispatch_codex_lane": 1,
-    "writeback_rejected": 1
-  }
-}

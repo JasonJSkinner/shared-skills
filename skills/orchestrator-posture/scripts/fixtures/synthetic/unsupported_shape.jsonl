@@ -1,2 +1,0 @@
-{"id":"rollout-1","kind":"turn","payload":{"role":"user","text":"hi"}}
-{"id":"rollout-2","kind":"turn","payload":{"role":"assistant","text":"ok"}}

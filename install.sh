@@ -97,11 +97,11 @@ read_header_field() {
 }
 
 publish_skill() {
-    local src="$1" dst="$2" provider="$3" tmp existing_at
-    local target_dir="$(dirname "$dst")"
+    local skill_dir="$1" target_dir="$2" provider="$3"
+    local src="$skill_dir/SKILL.md" dst="$target_dir/SKILL.md" tmp existing_at
     if [ "$DRY_RUN" = "1" ]; then
         ACTION_COUNT=$((ACTION_COUNT + 1))
-        printf "  [DRY-RUN] publish %s for %s\n" "$src" "$provider"
+        printf "  [DRY-RUN] publish SKILL.md for %s:%s\n" "$provider" "$(basename "$skill_dir")"
         printf "           PYTHONPATH=%s/lib python3 %s %s --provider %s > %s\n" "$SCRIPT_DIR" "$PUBLISHER" "$src" "$provider" "$dst"
         return 0
     fi
@@ -122,76 +122,19 @@ publish_skill() {
     printf "  [INSTALL] published SKILL.md: %s\n" "$dst"
 }
 
-install_version() {
-    local src="$1" target="$2"
-    if [ "$DRY_RUN" = "1" ]; then
-        printf "  [DRY-RUN] derive installed metadata: %s/VERSION.json\n" "$target"
-        return 0
-    fi
-    python3 - "$src" "$target" <<'PY'
-import hashlib
-import json
-import os
-from pathlib import Path
-import sys
-import tempfile
-
-source, target = Path(sys.argv[1]), Path(sys.argv[2])
-metadata = json.loads(source.read_text(encoding="utf-8"))
-if not isinstance(metadata, dict):
-    raise ValueError("VERSION.json must contain an object")
-metadata["content_hash_sha256"] = hashlib.sha256((target / "SKILL.md").read_bytes()).hexdigest()
-content = (json.dumps(metadata, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
-destination = target / "VERSION.json"
-if not destination.exists() or destination.read_bytes() != content:
-    fd, name = tempfile.mkstemp(prefix=".VERSION.json.", dir=target)
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(content)
-        os.replace(name, destination)
-    finally:
-        Path(name).unlink(missing_ok=True)
-PY
-}
-
-provider_asset_is_tagged() {
-    PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$SCRIPT_DIR/lib${PYTHONPATH:+:$PYTHONPATH}" python3 - "$1" "$2" <<'PY'
-from pathlib import Path
-import sys
-from provider_blocks import ProviderBlockError, render_for_provider
-
-try:
-    source = Path(sys.argv[1]).read_text(encoding="utf-8")
-    rendered = render_for_provider(source, sys.argv[2])
-except (OSError, UnicodeError, ProviderBlockError) as exc:
-    print(f"invalid Markdown asset: {sys.argv[1]}: {exc}", file=sys.stderr)
-    sys.exit(2)
-sys.exit(0 if rendered != source else 1)
-PY
-}
-
 copy_entry() {
-    local src="$1" dst="$2" provider="$3" base entry
+    local src="$1" dst="$2" base entry
     base="$(basename "$src")"
     case "$base" in
-        SKILL.md|REFRESH.md|_archive|__pycache__|.pytest_cache|.mypy_cache|.git|.DS_Store|*.pyc) skip "excluded: $src"; return 0 ;;
+        SKILL.md|REFRESH.md|__pycache__|.pytest_cache|.mypy_cache|.git|.DS_Store|*.pyc) skip "excluded: $src"; return 0 ;;
     esac
     if [ -d "$src" ]; then
         act "ensure directory: $dst" mkdir -p "$dst"
         for entry in "$src"/* "$src"/.[!.]*; do
             [ -e "$entry" ] || continue
-            copy_entry "$entry" "$dst/$(basename "$entry")" "$provider"
+            copy_entry "$entry" "$dst/$(basename "$entry")"
         done
     elif [ -f "$src" ]; then
-        if [[ "$src" == *.md ]]; then
-            if provider_asset_is_tagged "$src" "$provider"; then
-                publish_skill "$src" "$dst" "$provider"
-                return
-            else
-                local rc=$?
-                [ "$rc" = "1" ] || return "$rc"
-            fi
-        fi
         if [ "$DRY_RUN" = "0" ] && [ -f "$dst" ] && cmp -s "$src" "$dst"; then
             skip "unchanged asset: $dst"
         else
@@ -223,14 +166,10 @@ for provider in claude codex gemini; do
         [ -d "$skill_dir" ] || continue
         skill="$(basename "$skill_dir")"
         SKILL_COUNT=$((SKILL_COUNT + 1))
-        publish_skill "$skill_dir/SKILL.md" "$target/$skill/SKILL.md" "$provider"
+        publish_skill "$skill_dir" "$target/$skill" "$provider"
         for entry in "$skill_dir"/* "$skill_dir"/.[!.]*; do
             [ -e "$entry" ] || continue
-            if [ "$(basename "$entry")" = "VERSION.json" ]; then
-                install_version "$entry" "$target/$skill"
-            else
-                copy_entry "$entry" "$target/$skill/$(basename "$entry")" "$provider"
-            fi
+            copy_entry "$entry" "$target/$skill/$(basename "$entry")"
         done
     done
 done

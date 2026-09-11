@@ -19,7 +19,7 @@
 | Parameter | Required | Shape | Description |
 |---|---|---|---|
 | `<target>` | yes | positional, path or glob | The DIB/PCB/spec stack to be validated. Walkthrough mode reads the target's governing law and derives scenarios from intent. |
-| `--chain=<artifact>` | no (opt-in) | path or glob to realization artifact(s) | If provided, triggers Lane 1b walkthrough against the named realization artifacts after Lane 1a scenarios emit. Without `--chain`, scenarios-only mode terminates after Lane 1a. **`--chain` MUST trigger Lane 1b** — it is not a passive metadata field. **The named artifacts ARE the realization/spec-side stack being validated against intent** — `--chain` targets the spec/realization layer, consistent with Lane 1b's spec-centric read-set (`governing_spec_sections` in the `walkthrough-{NN}.json` schema). Walkthrough of non-spec implementation artifacts (code, configs) is out of scope for v2.0 (see §15). |
+| `--chain=<artifact>` | no (opt-in) | path or glob to realization artifact(s) | If provided, triggers Lane 1b walkthrough against the named realization artifacts after Lane 1a scenarios emit. Without `--chain`, scenarios-only mode terminates after Lane 1a. **`--chain` MUST trigger Lane 1b** — it is not a passive metadata field. **The named artifacts ARE the realization/spec-side stack being validated against intent** — `--chain` targets the spec/realization layer, consistent with Lane 1b's spec-centric read-set (`governing_spec_sections` in the `walkthrough-S{NN}.json` schema). Walkthrough of non-spec implementation artifacts (code, configs) is out of scope for v2.0 (see §15). |
 | `--scope=<level>` | no | scoped-run enum when available; until then `--scope` documents the composition contract without enum-validation | Narrows the activation overlay across ALL lanes uniformly (generator-level). Lane 1a still gets full intent for holdout-discipline; the narrowing is in chunk-list construction + downstream lane prompts. |
 | `--scenarios=N-M` | no (default 12-15) | range like `12-15` or single integer | Lane 1a scenario count; not hardcoded. |
 
@@ -70,7 +70,7 @@ The five lane prompts are shipped as parameterized templates in `references/lane
 | Lane | Reads | Writes | Catches |
 |---|---|---|---|
 | 1a | DIBs + concepts + Phase A **DIB** chunk list | `lane-1a-scenarios.json` (+ `holdout_integrity` field) | Intent-not-spec'd-anywhere gaps; spec-says-but-DIB-didn't-intend |
-| 1b | DIBs + specs + ONE assigned scenario | `walkthrough-{NN}.json` | Spec-stack-can't-produce-DIB-consistent-outcome for concrete scenarios |
+| 1b | DIBs + specs + ONE assigned scenario | `walkthrough-S{NN}.json` | Spec-stack-can't-produce-DIB-consistent-outcome for concrete scenarios |
 | 2 | DIB chunks + DIBs + specs | `L2-batch-NNN-results.json` | DIB intents with no spec realization (downward) |
 | 3 | Spec chunks + DIBs + decision artifacts | `L3-batch-NNN-results.json` | Scope creep — spec content with no DIB backing (upward) |
 | C | All lane outputs + DIBs + specs | `meta-synthesis.{json,md}` | Cross-lane patterns; absence-as-corroboration |
@@ -228,7 +228,7 @@ This avoids the "is the count 14, 13, or 12?" ambiguity downstream tooling encou
 |---|---|---|
 | Phase A chunk lists | `phase-a/unified-dib-chunks.json`, `phase-a/unified-spec-chunks.json` | Phase A output |
 | Lane 1a | `phase-b/lane-1a-scenarios.json` | Lane 1a output |
-| Lane 1b | `phase-b/walkthrough-{NN}.json` (one per scenario; `{NN}` is the full scenario ID, e.g. `S01`) | Lane 1b outputs |
+| Lane 1b | `phase-b/walkthrough-S{NN}.json` (one per scenario; NN is the 2-digit scenario ID) | Lane 1b outputs |
 | Lane 2 | `phase-b/L2-batch-NNN-results.json` (NNN is 3-digit batch ID) | Lane 2 batched outputs |
 | Lane 3 | `phase-b/L3-batch-NNN-results.json` | Lane 3 batched outputs |
 | Phase C | `phase-c/meta-synthesis.json` + `phase-c/meta-synthesis.md` | Phase C output (sink) |
@@ -266,7 +266,7 @@ This avoids the "is the count 14, 13, or 12?" ambiguity downstream tooling encou
 
 **Two orthogonal scenario axes:** `category` is the *stress-profile* axis (`common | edge | adversarial` — how hard the scenario pushes); `scenario_classification` is the *consequence-class* axis carried verbatim from v1.3 doctrine (`strict contract gate | evidence probe | corpus scan | ergonomics warning` — how a failure should be weighed). Both are recorded; Phase C + `/root-cause` routing consume `scenario_classification` to weigh findings. This is how walkthrough mode preserves v1.3's scenario classification (see §14).
 
-### 9.2 — `walkthrough-{NN}.json`
+### 9.2 — `walkthrough-S{NN}.json`
 
 ```json
 {

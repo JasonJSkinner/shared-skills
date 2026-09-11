@@ -1,6 +1,6 @@
 ---
 name: root-cause
-version: "1.2"
+version: 1.1
 description: Systemic root-cause analysis — classify discrepancies as reusable issue families instead of patching surface symptoms. Use when the user invokes /root-cause, or asks to "find the root cause," "look past the surface," "avoid ad-hoc fixes," or "find the broader bug family." For natural-language triggers, confirm invocation before proceeding.
 ---
 

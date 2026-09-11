@@ -64,13 +64,13 @@ When an item is `covered_by_deferral` AND the deferred work is load-bearing for 
 
 ### Provider schemes
 
-Provider schemes must be declared in the project's provider registry or governing artifact.
+Provider schemes must be declared in `~/.agentic-systems/forests.yaml` `providers:` section.
 
 The deferral's *status* is resolved from the provider at evaluation time — **DO NOT mirror provider status into the map** (that would create a stale second ledger). The reference (stable ID + provider context + label) is durable; the status is not.
 
 ### No-provider behavior
 
-If a deferral URI's provider is not declared or resolvable, its status is `unknown` at evaluation time:
+If a deferral URI's provider isn't declared in `forests.yaml` `providers:`, the deferral's status is `unknown` at evaluation time:
 
 > *"An unknown/open deferral status MUST NOT be counted as completed work in strict / canonization mode."*
 

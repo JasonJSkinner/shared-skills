@@ -1,11 +1,11 @@
 {
   "current_version": "1.2",
   "parent_version": "1.1",
-  "updated_at": "2026-09-09",
-  "change_summary": "Model-reference sweep: repointed stale long-context model recommendation at Step 6 blast-radius guidance to a generic capable long-context model. Surrounding prose and explicit-ID-binding guidance preserved. Surgical; no contract, gate, or topology change. Public frontmatter marker aligned with documented package version; body unchanged.",
+  "updated_at": "public-release",
+  "change_summary": "Model-reference sweep: repointed stale long-context model recommendation at Step 6 blast-radius guidance to a generic capable long-context model. Surrounding prose and explicit-ID-binding guidance preserved. Surgical; no contract, gate, or topology change.",
   "archive_path": "not shipped in public release",
   "skill_entrypoint": "SKILL.md",
-  "content_hash_sha256": "73b5d2b991737584c6817e65b3e4a69fb482c75254966e9da207363c1bd30500",
+  "content_hash_sha256": "9affe66cee13220af470538e82c7c146b20c080c5385e07c97d76bf86a18a98c",
   "breaking": false,
   "migration_note": null
 }
